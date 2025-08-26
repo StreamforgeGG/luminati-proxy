@@ -21,9 +21,9 @@ import {T, t, Language} from './common/i18n.js';
 import {bytes_format, report_exception, Clipboard} from './util.js';
 import CP_ipc from './cp_ipc.js';
 
-export const www_api = 'https://brightdata.com';
-export const www_help = 'https://help.brightdata.com';
-export const lpm_faq_article = '12632549957649';
+export const www_api = '';
+export const www_help = '';
+export const lpm_faq_article = '';
 
 export const Copy_icon = ({text})=>{
     let tt_timeout = null;
@@ -343,19 +343,7 @@ export class Cm_wrapper extends Pure_component {
 }
 
 export const Faq_link = with_www_api(props=>{
-    const click = ()=>{
-        let url = props.url;
-        if (!url)
-        {
-            const article = props.article || lpm_faq_article;
-            const anchor = props.anchor ? `#${props.anchor}` : '';
-            url = `${props.www_help}/hc/en-us/articles/${article}${anchor}`;
-        }
-        window.open(url, '_blank');
-    };
-    return <Tooltip title={t('Read more')}>
-      <span onClick={click} className="fa fa-question faq_link"/>
-    </Tooltip>;
+    return null;
 });
 
 export const Note = props=>
@@ -475,8 +463,7 @@ export const Logo = with_www_api(class Logo extends Pure_component {
     }
     render(){
         return <div className="nav_top">
-          <a href={`${this.props.www_api}/cp`} rel="noopener noreferrer"
-            target="_blank" className="logo_big"/>
+          <div className="logo_big"/>
           <div className="version">V{this.state.ver}</div>
           <div className="nav_top_right">
             <Language/>
@@ -511,13 +498,7 @@ export const Preset_description = ({preset, rule_clicked})=>{
 
 export const Ext_tooltip = with_www_api(props=>
     <div>
-      This feature is only available when using{' '}
-        <a className="link"
-          target="_blank"
-          rel="noopener noreferrer"
-          href={`${props.www_api}/cp/zones`}>
-            proxies by Bright Data network
-        </a>
+      This feature is only available when using proxies by Bright Data network
     </div>);
 
 export const debug = str=>{
@@ -536,14 +517,9 @@ export const No_zones = with_www_api(class No_zones extends Pure_component {
     render(){
         if (!this.state.settings)
             return null;
-        const link_props = this.state.settings.zagent && window.parent ?
-            {onClick: ()=>CP_ipc.post('no_zones')} :
-            {target: '_blank', rel: 'noopener noreferrer',
-                href: `${this.props.www_api}/cp/zones`};
         return <div>
           <div className="no_zones">
-            <T>No active zones found. You can activate them</T>{' '}
-            <a className="link" {...link_props}><T>here</T></a>.
+            <T>No active zones found.</T>
           </div>
         </div>;
     }

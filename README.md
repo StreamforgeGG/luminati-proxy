@@ -8,7 +8,6 @@ A forward HTTP/HTTPS proxy on your side, to accelerate/compress/rotate/distribut
 
 With Proxy manager you can drive the Bright Data residential IPs or Bright Data static IPs.
 
-This tool requires a [Bright Data](https://brightdata.com/?cam=github-proxy) account.
 Please report issues or bugs to your account manager or from our [help center](https://brightdata.com/faq#proxy)
 
 <em>Read this in [中文](https://brightdata.com/static/lpm/README-zh-CN.html).</em>
